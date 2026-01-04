@@ -3,5 +3,5 @@ languageCode = 'en-us'
 title = 'Dr. Strangelog'
 theme = "terminal"
 [params.logo]
-   logoText = "Dr. Strangelog"
+   logoText = "Dr. Strangelog Auto Deploy"
    logoHomeLink = "/"
