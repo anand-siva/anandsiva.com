@@ -1,0 +1,7 @@
+:root {
+  --accent: #00ff41;
+}
+
+body {
+  font-family: "JetBrains Mono", "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
+}

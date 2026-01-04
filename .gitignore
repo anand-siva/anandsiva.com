@@ -1,0 +1,26 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Hugo build lock
+.hugo_build.lock
+
+# OS files
+.DS_Store
+
+# Local environment
+.env
+.env.*
+
+# Node / tooling
+/node_modules/
+/.npm/
+/.yarn/
+/.pnpm-store/
+
+# Editors
+.idea/
+.vscode/
+
+# Misc
+*.log
