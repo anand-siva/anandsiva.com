@@ -2,12 +2,16 @@
 {{- $raw = trim $raw "\n" -}}
 {{- $lines := split $raw "\n" -}}
 {{- $prompt := .Site.Params.terminalPrompt | default "$" -}}
+{{- $title := .Get "title" | default "" -}}
 
 <div class="terminal-matrix" role="region" aria-label="Terminal transcript">
   <div class="terminal-matrix__chrome" aria-hidden="true">
     <span class="terminal-matrix__dot terminal-matrix__dot--red"></span>
     <span class="terminal-matrix__dot terminal-matrix__dot--yellow"></span>
     <span class="terminal-matrix__dot terminal-matrix__dot--green"></span>
+    {{- if ne (trim $title " ") "" -}}
+      <span class="terminal-matrix__title">{{ $title }}</span>
+    {{- end -}}
   </div>
   <div class="terminal-matrix__screen">
     {{- range $lines }}
@@ -20,9 +24,9 @@
       {{- end -}}
       <div class="terminal-matrix__line {{ if $isOutput }}terminal-matrix__line--out{{ else }}terminal-matrix__line--in{{ end }}">
         {{- if and (not $isOutput) (ne (trim $prompt " ") "") -}}
-          <span class="terminal-matrix__prompt">{{ $prompt | htmlEscape }}</span>
+          <span class="terminal-matrix__prompt">{{ $prompt }}</span>
         {{- end -}}
-        <span class="terminal-matrix__text">{{- if eq (trim $text " ") "" -}}{{ "&nbsp;" | safeHTML }}{{- else -}}{{ $text | htmlEscape }}{{- end -}}</span>
+        <span class="terminal-matrix__text">{{- if eq (trim $text " ") "" -}}{{ "&nbsp;" | safeHTML }}{{- else -}}{{ $text }}{{- end -}}</span>
       </div>
     {{- end }}
   </div>
