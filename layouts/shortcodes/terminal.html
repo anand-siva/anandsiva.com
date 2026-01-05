@@ -23,7 +23,8 @@
         {{- if and (not $isOutput) (ne (trim $prompt " ") "") -}}
           <span class="terminal-matrix__prompt">{{ $prompt }}</span>
         {{- end -}}
-        <span class="terminal-matrix__text">{{- if eq (trim $text " ") "" -}}{{ "&nbsp;" | safeHTML }}{{- else -}}{{ $text }}{{- end -}}</span>
+        {{- $display := $text | htmlUnescape -}}
+        <span class="terminal-matrix__text">{{- if eq (trim $text " ") "" -}}{{ "&nbsp;" | safeHTML }}{{- else -}}{{ $display }}{{- end -}}</span>
       </div>
     {{- end }}
   </div>
