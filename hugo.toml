@@ -2,6 +2,8 @@ baseURL = 'https://anandsiva.com/'
 languageCode = 'en-us'
 title = 'Dr. Strangelog'
 theme = "terminal"
+[params]
+  terminalPrompt = "anand@mpb:~$"
 [params.logo]
    logoText = "Dr. Strangelog Auto Deploy"
    logoHomeLink = "/"
