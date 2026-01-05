@@ -5,14 +5,11 @@
 {{- $title := .Get "title" | default "" -}}
 
 <div class="terminal-matrix" role="region" aria-label="Terminal transcript">
-  <div class="terminal-matrix__chrome" aria-hidden="true">
-    <span class="terminal-matrix__dot terminal-matrix__dot--red"></span>
-    <span class="terminal-matrix__dot terminal-matrix__dot--yellow"></span>
-    <span class="terminal-matrix__dot terminal-matrix__dot--green"></span>
-    {{- if ne (trim $title " ") "" -}}
+  {{- if ne (trim $title " ") "" -}}
+    <div class="terminal-matrix__chrome" aria-hidden="true">
       <span class="terminal-matrix__title">{{ $title }}</span>
-    {{- end -}}
-  </div>
+    </div>
+  {{- end -}}
   <div class="terminal-matrix__screen">
     {{- range $lines }}
       {{- $line := . -}}

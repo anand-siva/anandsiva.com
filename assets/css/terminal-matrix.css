@@ -58,7 +58,6 @@
 }
 
 .terminal-matrix__title {
-  margin-left: auto;
   color: var(--tm-dim);
 }
 
