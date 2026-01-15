@@ -2,8 +2,13 @@ baseURL = 'https://anandsiva.com/'
 languageCode = 'en-us'
 title = 'Dr. Strangelog'
 theme = "terminal"
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication = "publications"
 [params]
   terminalPrompt = "dr@strangelog:~$"
+  ReadMore = "Read More..."
 [params.logo]
    logoText = "Dr. Strangelog"
    logoHomeLink = "/"

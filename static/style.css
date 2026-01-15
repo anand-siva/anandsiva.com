@@ -1,0 +1,12 @@
+:root {
+  --image-accent: #00ff41;
+}
+
+img {
+  border-color: var(--image-accent);
+}
+
+figure figcaption {
+  background: var(--image-accent);
+  color: #0a0a0a;
+}
