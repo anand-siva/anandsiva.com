@@ -26,12 +26,14 @@ cover photo credit - https://lightning.ai/pages/community/tutorial/redis-for-mac
 Redis Streams feels safe.
 Messages get processed, you ACK them, and everything keeps moving. Nothing backs up, dashboards look clean, and your workers stay busy.
 
-Then one day Redis falls over — not because of traffic, not because of a bug, but because memory quietly grew without anyone noticing. This post is about the assumption that caused that, and how Redis Streams actually behaves in production.
+Then one day Redis starts behaving badly — not because of traffic, not because of a bug, but because memory quietly grew without anyone noticing. This post is about the assumption that caused that, and how Redis Streams actually behaves in production.
 
 **TL;DR**
 - `XACK` removes messages from the Pending Entries List, not from the stream.
 - Redis Streams do not have automatic retention.
-- Without trimming (`MAXLEN` or `XTRIM`), stream memory grows unbounded and will eventually crash Redis.
+- Without a retention policy (`MAXLEN` or `XTRIM`), stream memory can grow unbounded and eventually exhaust memory.
+
+All examples here are local and illustrative. Nothing in this post references any specific employer, customer, or production environment.
 
 ---
 
@@ -82,7 +84,8 @@ docker compose up -d
 Honestly, until I wrote this blog, I didn’t know this feature existed.
 It’s a GUI that lets you explore the data inside your Redis instance.
 
-The docker compose already has the redis insight setup and mapped to port 5540.
+The Docker Compose file already has RedisInsight set up and mapped to port 5540.
+
 So let’s open it in the browser:
 
 http://localhost:5540/
@@ -212,7 +215,7 @@ XADD car * vin "1HGCM82633A004352" owner "Alex" mileage 45210
       6) "45210"
 ```
 
-Alright so in this pub/sub type of archetecture, how do we read it with a subscription type of model.
+Alright so in this pub/sub type of architecture, how do we read it with a subscription type of model.
 
 It’s not really pub/sub in the way most people think about it.
 
@@ -576,7 +579,8 @@ OK
             8) "20222"
 ```
 
-Bad news bears. See what happened in my setup is that I planned to have a certain amount of records per minute. My understanding was that after I ACKed them, then that memory would be freed up. I was WRONG, and this situation will eventually crash your redis instance. 
+In a typical setup, you might plan for a certain number of records per minute. 
+My understanding was that after I ACKed them, memory would be freed up. I was wrong — ACK clears the PEL, not the stream. Without a retention policy, stream memory can grow until you hit your configured limits (maxmemory/eviction), and that’s when things get painful.
 
 How do we protect from this?
 
@@ -621,9 +625,6 @@ XTRIM car MINID ~ <timestamp>-0
 
 There are, of course, many other nuances to Redis Streams, but that is the basics and one big gotcha with MAXLEN. 
 
-I hope this article finds people that are about to setup redis streams and realize ACK is not the same as triming the stream. 
+I hope this article finds people that are about to setup redis streams and realize ACK is not the same as trimming the stream. 
 
 Happy Streaming!!!!
-
-This article demonstrates Redis Streams behavior using local examples and publicly documented features. It does not describe any specific production system.
-
