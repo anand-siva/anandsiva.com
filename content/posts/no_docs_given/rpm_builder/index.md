@@ -15,11 +15,11 @@ hideComments = false
 
 <what is an rpm>
 
-Stop be if this sounds familiar, you want to run a popular service on your cloud instance. You go to the vendor site and look for the easiest way to install something on dnf based cloud linux server. You look for the rpm for your linux distro. Wait it is not there? How can that be, they got rpms for everything else.
+Stop me if this sounds familiar: you want to run a popular service on your cloud instance. You go to the vendor site and look for the easiest way to install something on a DNF-based cloud Linux server. You look for the RPM for your Linux distro. Wait, it is not there? How can that be? They've got RPMs for everything else.
 
-I want to install the latest version. The latest stable Redis version is 8.6.0, released in February 2026.
+I want to install the latest 7 version. The latest stable Redis 7 version is 7.2.4, released in January 2024.
 
-Let's take a real world example of Redis. This is their install directions for Linux - https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/install-redis-on-linux/
+Let's take a real world example with Redis. These are their install directions for Linux: https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/install-redis-on-linux/
 
 
 ## Why Do I See an Official APT Repo… But Not an RPM Repo?
@@ -67,7 +67,9 @@ Instead, Redis is packaged by the distribution maintainers.
 
 ---
 
-## RPMS and what they really do
+{{< figure src="do_something.png"  style="max-width:70%;" >}}
+
+## RPMs and what they really do
 
 An RPM (Red Hat Package Manager) is a structured software package format used in RHEL-based Linux systems that installs, configures, tracks, verifies, and cleanly removes software — including its files, dependencies, and lifecycle scripts — in a consistent and reproducible way.
 
@@ -96,7 +98,7 @@ More specifically, many RPMs include:
 It’s not magic.
 It’s a controlled, scripted installation lifecycle.
 
-That is why when you rpm install certain software you can just launch it and it the service just works.
+That is why, when you install certain software via RPM, you can just launch it and the service just works.
 
 ```bash
 systemctl start redis
@@ -104,18 +106,18 @@ systemctl start redis
 
 ## Heart of the RPM - .spec file
 
-How does your rpm know how to build the source code and where to put the files. The magic is in the .spec file! 
+How does your RPM know how to build the source code and where to put the files? The magic is in the .spec file!
 
 An RPM doesn’t guess how to build anything.
 It follows instructions written in a .spec file.
 
 The spec file tells rpmbuild:
-*Where to get the source
-*How to unpack it (%prep)
-*How to compile it (%build)
-*Where to copy files (%install)
-*What files belong in the package (%files)
-*What to run before/after install (%pre, %post, etc.)
+* Where to get the source
+* How to unpack it (%prep)
+* How to compile it (%build)
+* Where to copy files (%install)
+* What files belong in the package (%files)
+* What to run before/after install (%pre, %post, etc.)
 
 It’s basically a build + packaging recipe.
 
@@ -301,6 +303,8 @@ The difficult part is understanding the directives of the .spec file.
 ---
 
 ## Make your own magic
+
+{{< image src="magic.gif" alt="Magic confetti" style="width:100%; max-width:100%;" >}}
 
 Now that we understand the basics of rpms and how they are put together. What is the tool that creates these rpms? 
 
