@@ -7,6 +7,38 @@ img {
 }
 
 figure figcaption {
-  background: var(--image-accent);
-  color: #0a0a0a;
+  background: #0a0a0a;
+  color: var(--image-accent);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  padding: 8px 12px;
+  margin-top: 0;
+  border: 1px solid var(--image-accent);
+  border-top: 0;
+}
+
+.post-content h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 42px;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.post-content h2::before {
+  content: "> ";
+  color: var(--accent);
+}
+
+.post-content h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 }
