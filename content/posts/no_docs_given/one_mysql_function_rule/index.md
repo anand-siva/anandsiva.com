@@ -47,7 +47,7 @@ Show me all customers who have spent more than $1,000 in total, along with their
 
 Old school style first, you have to use subqueries.
 
-```
+```sql
 SELECT c.name, customer_totals.total_spent
 FROM (
   SELECT customer_id, SUM(amount) AS total_spent
@@ -60,7 +60,7 @@ WHERE customer_totals.total_spent > 1000;
 
 using CTE: 
 
-```
+```sql
 WITH customer_totals AS (
   SELECT customer_id, SUM(amount) AS total_spent
   FROM orders
@@ -76,7 +76,7 @@ Just looks cleaner this way and easier to read for most people. You might ask th
 
 Show me all customers who placed orders in the last 90 days, calculate how much each customer spent and how many orders they placed, identify customers who spent more than $5,000 and made at least 5 orders, then return their name, email, total spending, and order count sorted by highest spending.
 
-```
+```sql
 SELECT 
   c.name,
   c.email,
@@ -113,7 +113,7 @@ Ok now more like imagine if AI came up with this query.
 
 Let's clean it up with CTEs: 
 
-```
+```sql
 WITH recent_orders AS (
   SELECT customer_id, amount, order_date
   FROM orders
@@ -157,7 +157,7 @@ That select clause looks hella better now. It makes more logical sense. I can pi
 
 Now let me tell you about a CTE I just learned about that makes no sense in my mind.
 
-```
+```sql
 WITH RECURSIVE employee_hierarchy AS (
   SELECT id, name, manager_id, 1 AS level
   FROM employees
@@ -197,7 +197,7 @@ graph/path problems
 
 Really the only one that stands out for normal applications is traversing hierarchies. I think most people would decide that designing the database table better would solve this problem. That could be the case, but there is a famous example of when to use it. This example was in every database class I took. Employee hierarchies.
 
-```
+```sql
 CREATE TABLE employees (
   id INT PRIMARY KEY,
   name VARCHAR(100),
@@ -214,7 +214,7 @@ As you can see the `manager_id` is a foreign key that references the `id` on its
 
 How do you generate a hierarchy of employees and who is whose boss. Typically you can write a function, lets use python.
 
-```
+```python
 def get_manager_chain(employee_id, employees):
     chain = []
 
@@ -244,7 +244,7 @@ Looking at this I pined for the day I could just do this in SQL. For some reason
 
 ## The recursive SQL version
 
-```
+```sql
 WITH RECURSIVE manager_chain AS (
   -- Start with the employee
   SELECT 
@@ -317,7 +317,7 @@ Let's see if I can explain this.
 
 The first thing this statement does is run the anchor query:
 
-```
+```sql
 SELECT id, name, manager_id, 1 AS level
 FROM employees
 WHERE id = 5
@@ -331,7 +331,7 @@ employee 5, manager_id = 4, level 1
 
 Then the SQL statement runs against the current base result.
 
-```
+```sql
 SELECT e.id, e.name, e.manager_id, mc.level + 1
 FROM employees e
 JOIN manager_chain mc

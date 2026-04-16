@@ -42,3 +42,43 @@ figure figcaption {
   color: var(--accent);
   border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 }
+
+.highlight {
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.highlight pre.chroma {
+  padding: 12px 0;
+}
+
+.code-title {
+  background: #0a0a0a;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.code-title::before {
+  content: "> ";
+  color: var(--accent);
+}
+
+.copy-button {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.code-title .copy-button {
+  background: #0a0a0a;
+}
+
+.code-title .copy-button:hover {
+  background: color-mix(in srgb, var(--accent) 14%, #0a0a0a);
+}

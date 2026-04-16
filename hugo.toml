@@ -2,6 +2,10 @@ baseURL = 'https://anandsiva.com/'
 languageCode = 'en-us'
 title = 'Dr. Strangelog'
 theme = "terminal"
+
+[markup.highlight]
+  noClasses = false
+
 [taxonomies]
   tag = "tags"
   category = "categories"
