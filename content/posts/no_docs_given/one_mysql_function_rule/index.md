@@ -390,4 +390,8 @@ So next time you are dealing with a problem and you are looking to write a crazy
 
 You will surely impress all your database friends (all 3 of them) WITH RECURSIVE 
 
+{{< figure src="matrix.gif" style="max-width:70%;" >}}
+
+{{< figure src="aquarium.gif" style="max-width:70%;" >}}
+
 {{< figure src="dance_party.gif" caption="Me and my database friends" style="max-width:70%;" >}}
