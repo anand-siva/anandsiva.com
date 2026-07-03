@@ -27,6 +27,9 @@ hideComments = false
 
 I just got back from my second-ever work conference. This time it was the AWS Summit down in DC. I was not sure how I would like it, but I definitely learned a lot. I think this was partially due to me going to builder and technical talk sessions that were not all about AI. My last session was "A deep dive on IAM policy evaluation" by two AWS engineers, Matt Luttrell and Matthew Heck. It was a very good talk, and it really showed me I knew very little about IAM and how it worked.
 
+If you want the original slide deck, AWS published it here:
+https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/events/approved/reinforce-2025/reinforce/2025/slides/IAM431_A-deep-dive-on-IAM-policy-evaluation.pdf
+
 On the surface, I technically understood it, and let's be honest, I leaned on AI to help me with a bunch of my policies. But something always happened when I used AI for policies: 60% of the time it did not work properly or gave too many permissions. This blog is going to be me going through some simple AWS IAM policies and trying to incorporate what I learned from Matt and Matthew.
 
 ## Starting from zero
