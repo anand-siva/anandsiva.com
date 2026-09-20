@@ -23,7 +23,7 @@ hideComments = false
 
 With this being a long weekend here in the US, I thought I would take some time to write one of my articles. I have been struggling to find the time and motivation to write, but this weekend gave me a perfect time to write one. I was racking my brain about what topic to write about. Databases, Golang, Kubernetes??? 
 
-I almost settled on starting to write some articles about setting up your own kubernetes cluster from scratch. Then I thought to myself "what the hell do I even know about this?". Even though all my articles are about me learning along with my audience, for some reason this struck a chord. Not that I did not think I could teach myself these concepts, but I just stopped for a second and got overwhelmed about the things I did not know. I have worked over 15 years in the industry and have learned a hella lotta stuff. But there are days and moments I just ask myself "Do you even know how to IT bro?".
+I almost settled on starting to write some articles about setting up your own kubernetes cluster from scratch. Then I thought to myself "what the heck do I even know about this?". Even though all my articles are about me learning along with my audience, for some reason this struck a chord. Not that I did not think I could teach myself these concepts, but I just stopped for a second and got overwhelmed about the things I did not know. I have worked over 15 years in the industry and have learned a heck of a lotta stuff. But there are days and moments I just ask myself "Do you even know how to IT bro?".
 
 ## Sharing My Thoughts
 
