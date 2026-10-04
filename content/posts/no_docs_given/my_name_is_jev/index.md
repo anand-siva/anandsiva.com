@@ -491,3 +491,7 @@ This way I can feel like a programmer again and code (with AI) a program that ca
 Only time will tell how effective Jev is since it is the new kid on the block. From the small example I have run, I can see the benefits of using Jev. I can also see the cost savings that can come from more compact context and structured answers. I also like how there is no memory, per se, and each question stands on its own.
 
 Hopefully, that gives you a small example of Jev. I will be sure to stress-test it and look for ways to use both LLMs and Jev to make real applications that solve real-world problems. After writing these articles for a few months now, I think I will start creating some real applications that leverage everything I have learned. Stay tuned!
+
+*Until next time says Dexter while he tries to eat me!*
+
+{{< image src="dexter-tries-to-eat-me.jpg" alt="Dexter playfully biting my hand" style="width:100%; max-width:100%;" >}}
